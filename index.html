@@ -1,0 +1,50 @@
+<html>
+  <body bgcolor="#aaaaff">
+    <h1>Hassan loves drawing</h1>
+    <canvas
+      id="imgcanvasm"
+      width="800"
+      height="300"
+      onmousemove="draw(event, 'imgcanvasm')"
+    ></canvas>
+    <canvas
+      id="imgcanvasc"
+      width="800"
+      height="300"
+      onclick="draw(event, 'imgcanvasc')"
+    ></canvas>
+    <script>
+      var radius = 30;
+      var grow = true;
+      function randColor() {
+        var r = Math.round(Math.random() * 240 + 16);
+        var g = Math.round(Math.random() * 240 + 16);
+        var b = Math.round(Math.random() * 240 + 16);
+        var color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+        return color;
+      }
+      function draw(e, id) {
+        var canvas = document.getElementById(id);
+        var ctx = canvas.getContext("2d");
+        var rect = canvas.getBoundingClientRect();
+        var poxs = e.clientX - rect.left;
+        var posy = e.clientY - rect.top;
+
+        if (grow) radius++;
+        else {
+          radius--;
+        }
+        if (radius > 50 || radius < 20) grow = !grow;
+
+        ctx.fillStyle = randColor() + "33";
+        ctx.beginPath();
+        ctx.arc(poxs, posy, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = randColor();
+        ctx.beginPath();
+        ctx.arc(poxs, posy, radius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>

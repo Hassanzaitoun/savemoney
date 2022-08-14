@@ -1,0 +1,39 @@
+<html>
+<head>
+   <title>Save money</title>
+   <script>
+    function calculate(){
+       var amount = parseInt(document.getElementById("amount").value) ;
+       var rate = parseFloat( document.getElementById("rate").value) ;
+       var years = parseInt( document.getElementById("years").value) ;
+       var total = 0;
+       for (var n = 0; n < years; n++){
+      total = total * (1 + rate / 100) + amount * 12;   
+       }
+       document.getElementById("output").innerHTML =document
+       "After " + years + " years, you,ll have saved " + Math.round(total) +
+       "±";
+    }
+     </script>
+</head>   
+<body bgcolor="#a3c0c6">
+   <h1>Saving calculator</h1>
+   <form>
+     <table>
+       <tr>
+         <td>Enter monthy saving (±): </td>
+         <td><input type="text" id="amount"></td>
+       </tr>
+       <tr>
+         <td>Beta blease enter your annual interst rate (%): </td>
+           <td> <td><input type="text" id="rate"></td>
+       </tr>
+       <tr>
+          <td>how long are you going to save: </td>
+            <td> <td><input type="text" id="years"></td>
+        </tr>
+      </table>
+      <botton type="botton" onclick="calculate()">Click to calculate your saving.</botton>
+      <h3 id="output">see how much you'll save...</h3>
+    </body>
+  </html>
